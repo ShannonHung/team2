@@ -25,7 +25,7 @@ spec:
             - containerPort: 8081
           env:
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:mysql://10.0.2.12810.0.2.128:30306/simpleshop
+              value: jdbc:mysql://10.0.2.128:30306/simpleshop
             - name: SPRING_DATASOURCE_PASSWORD
               value: csc1234
           resources: {}
