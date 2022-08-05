@@ -46,6 +46,6 @@ spec:
       nodePort: 30083
   selector:
     app: app4
-status:
-  loadBalancer: {}
+  type: ClusterIP
+
 
