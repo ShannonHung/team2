@@ -41,6 +41,6 @@ spec:
       nodePort: 30080
   selector:
     app: app1
-  type: LoadBalancer
+  type: NodePort
 status:
   loadBalancer: {}
