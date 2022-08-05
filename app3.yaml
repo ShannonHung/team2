@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: app3
+  name: app3
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app3
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: app3
+    spec:
+      containers:
+        - image: shannonhung/app2:4.0.0
+          imagePullPolicy: IfNotPresent
+          name: simpleshopmysql
+          ports:
+            - containerPort: 8081
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://10.0.2.12810.0.2.128:30306/simpleshop
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: csc1234
+          resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: app3
+  name: app3-svc
+spec:
+  ports:
+    - port: 8081
+      protocol: TCP
+      targetPort: 8081
+      nodePort: 30082
+  selector:
+    app: app3
+  type: NodePort
+status:
+  loadBalancer: {}
